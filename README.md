@@ -1,4 +1,8 @@
-## Hi there 👋
+### Hi there, I'm Sora! 👋
+
+🏠 Aspiring Software Developer sharing about my journey and learnings in tech<br/>
+🏫 Studying Computer Science at Telkom University, Bandung, Indonesia
+💭 Currently learning about Flutter and Mobile Development
 
 <!--
 **jingaega/jingaega** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
