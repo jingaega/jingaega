@@ -1,4 +1,4 @@
-## Hi there, I'm Sora!👋
+##👋 Hi there, I'm Sora!
 
 🏠 Aspiring Software Developer sharing about my journey and learnings in tech<br/><br>🏫 Studying Computer Science at Telkom University, Bandung, Indonesia<br/><br>💭 Currently learning about Flutter and Mobile Development<br/><br>🌐 You can find me on IG: @jinggayoe
 
