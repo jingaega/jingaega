@@ -58,3 +58,32 @@ PLAN.md written; **waiting for approval**. Nothing has been split, normalised or
   the metadata sex is wrong, or the whole donor is someone other than recorded.
 - Per PLAN §3 ("if the list differs … stop and report before splitting"), **stopped before
   the split** and asked the user how to handle Control_7.
+
+## 2026-09-30 — Split, preprocessing, baseline
+
+- **Control_7 decision (user):** keep it; use expression-derived sex as the sex covariate for
+  every donor (`samples.tsv: sex_expr`). Only V4/V5 use sex.
+- **Test set locked** (`splits/test_lock.json`, sha256 c822ca51…9e9f, scikit-learn 1.9.1,
+  random_state 20260930): 18 donors / 49 samples. BD 5/14, Control 5/14, MDD 4/12, SCZ 4/9
+  (donors/samples). Development: 52 clean donors / 143 samples (BD 13/36, Ctrl 14/41,
+  MDD 12/33, SCZ 13/33) + 13 mixed-sex samples, which are quarantined for C6. Control_7 is in
+  the development set.
+- **CV folds** saved (`splits/cv_*.json`): 5×5 StratifiedGroupKFold; validation folds hold
+  27–32 samples. C6 design fixed: validation folds identical to the primary; only the
+  training set changes.
+- **fRMA** on the 156 development arrays only (test arrays have not been extracted from the
+  tar). QA: per-array r with the submitters' RMA values 0.961–0.98, and every array's
+  best-matching submitted profile is its own. 20,794 genes after probe→gene collapse; 67
+  sex-specific probe sets removed.
+- **limma per fold:** consensus within-donor correlation ≈ 0.24; about 38 s per fit
+  (`duplicateCorrelation`). Parallelised across 4 R processes; the method is unchanged.
+- **Runtime re-estimate:** GCN 56 s per cell single-threaded → about 0.5 h per 125-cell
+  configuration with 4 workers. 7 GCN configurations ≈ 3.5 h; about 700 limma fits for the
+  controls ≈ 1.9 h. Total ≈ 6 h, well under 20 h, so no cuts are needed.
+
+### C1 baseline (control, not counted) — `results/raw/C1_logreg`
+Macro-F1 **0.311** (chance 0.25), fold SD 0.088, seed SD 0 (deterministic); MCC 0.096;
+AUC 0.588. Versus chance: NB corrected t = 1.28, **p = 0.21** (uncorrected p = 0.002).
+**It does not beat chance under the corrected test.** Per class recall/precision:
+BD 0.24/0.26, Control 0.29/0.24, MDD 0.21/0.24, **SCZ 0.56/0.60**. Whatever signal there is,
+is in SCZ.
