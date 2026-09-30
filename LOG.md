@@ -27,3 +27,19 @@ Running exploratory-variant count: **0 / 12**
   off-topic for expression classification.
 
 PLAN.md written; **waiting for approval**. Nothing has been split, normalised or trained.
+
+## 2026-09-30 — Supplied script and literature search (no modelling)
+
+- User supplied `gen_prep-v7.py`. Assessed in PLAN.md §12. **Not adopted**: gene selection
+  from a global GEO2R top table (selection bias), per-sample labels with no donor/region,
+  probe-level features, submitters' all-array RMA. Its log2 step is correct for this dataset
+  (series-matrix values are linear, max 30,750). It is kept as control **C8** to measure the
+  selection bias.
+- Literature search (web). Read: Lanz 2015 (source study; 19 tetrads matched on age, sex,
+  PMI; PVALB decrease in SCZ confirmed), Brouard 2024 (GNN benchmark; GNNs rarely beat
+  simple models; configuration-model random graph), Ambroise & McLachlan 2002, Varma &
+  Simon 2006, Tomita 2004, McCall 2010 (abstract only). WebFetch cannot reach NCBI; full
+  texts were fetched with curl from PMC / Europe PMC.
+- **Plan changes:** added C2b (degree-preserving random graph, from Brouard 2024), C8
+  (selection-bias demo), and the PVALB positive control; runtime estimate 14.6 → 17.7 h.
+  The variant budget is unchanged (0 / 12 used).

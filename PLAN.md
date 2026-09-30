@@ -183,7 +183,17 @@ explores donor-level pooling of predictions.
 | C6 | **Mixed-sex sensitivity** (§3), run on C1 and on the final best model | composition vs real effect |
 | C7 | **Label-permutation null** for C1 (labels shuffled at donor level inside training folds, 20 permutations) | empirical chance distribution, a check on the 0.25 figure |
 
-C7 is an addition beyond the list; it is cheap and it doesn't count as a variant.
+| C2b | **Degree-preserving random graph** (configuration-model edge swaps of the real graph, rebuilt per fold and seed) for every graph variant | Stronger null than C2: co-expression and PPI graphs have heavy-tailed degrees, so a uniform graph of the same density can lose to the real graph just because of hubs. Brouard et al. 2024 use this null. |
+| C8 | **Selection-bias demo** mirroring the supplied `gen_prep-v7.py`: limma top-250 genes chosen once on *all development samples*, then the C1 classifier under the same donor-grouped 5×5 CV | How much a GEO2R-style global top table inflates CV (Ambroise & McLachlan 2002). Never touches the test set. |
+
+C2b, C7 and C8 are additions beyond the list; they are controls/demonstrations, not
+attempts to win, and they don't count as variants.
+
+**Biological positive control (descriptive, no model):** Lanz et al. 2015 confirmed, by
+RT-PCR in this same cohort, the well-replicated reduction of parvalbumin (PVALB) mRNA in
+schizophrenia. In each training fold's SCZ-vs-Control limma fit (C5), I'll report PVALB's
+rank and sign. If PVALB isn't down in SCZ, the preprocessing is suspect before any
+classifier is.
 
 ## 7. Exploratory variants (budget 12; 9 pre-registered now, 3 held in reserve)
 
@@ -233,6 +243,38 @@ LOG.md with its full pre-registration before it runs.
 - **Parwati et al. 2024 (ICoDSA):** GCN for drug–drug interactions on warfarin from
   molecular graphs. It isn't about expression data, so I don't cite it for any claim here.
 
+Found by web search on 2026-09-30 and read (full text via PMC / Europe PMC):
+
+- **Lanz et al. 2015 (PLoS One 10:e0121744)**, the study behind GSE53987. The subjects are
+  "19 tetrads of subjects with schizophrenia, bipolar disorder, MDD matched with controls
+  according to age, gender and PMI", from the University of Pittsburgh brain bank. There are
+  two consequences. (i) Age, sex and PMI are balanced **by design**, so V4 (covariates only)
+  should do little with them. pH and RIN were *not* matched, and they are the covariates to
+  watch. (ii) The paper's own microarray check found no STEP differences, and a PVALB
+  reduction in SCZ was confirmed, which is the positive control above.
+- **Brouard, Mourad & Vialaneix 2024 (Brief Bioinform 25:bbae027), "Should we really use
+  graph neural networks for transcriptomic prediction?"** A reproducible benchmark of GNNs vs
+  logistic regression, SVM, random forest and MLP, with random (configuration-model) and
+  complete graphs as nulls. Conclusion, verbatim: "GNN rarely provides a real improvement in
+  prediction performance, especially when compared to the computation effort required",
+  attributed to "the limited quality or predictive power of the input biological gene
+  network itself." This is the counterweight to Xing 2022 and Zhang 2023, and the source of
+  C2b.
+- **Ambroise & McLachlan 2002 (PNAS 99:6562)**. If gene selection is "not performed in
+  training the rule at each stage of the cross-validation process", the error estimate is
+  optimistically biased; on two cancer datasets, correcting it removed the reported
+  near-zero error. This is the basis of rule 3 and C8.
+- **Varma & Simon 2006 (BMC Bioinformatics 7:91)**. Tuning with CV and reporting that same CV
+  error is biased; nested CV is nearly unbiased. This is why §4 has no tuning at all rather
+  than un-nested tuning.
+- **Tomita et al. 2004 (Biol Psychiatry 55:346)**. Agonal factors drive RNA integrity and
+  expression profiles. Brain pH correlated with RNA quality (r = .54 with % 18S+28S; r = .54
+  with % present calls), while PMI correlated with none of these (r ≈ .04–.05). This is the
+  mechanism behind V4/V5: pH/RIN, not PMI, are the likely confounds.
+- **McCall, Bolstad & Irizarry 2010 (Biostatistics 11:242)**, fRMA. Per-array normalisation
+  with frozen probe effects, "comparable to RMA when data are analyzed as a single batch".
+  I read the abstract and summary only.
+
 Expectation, stated in advance: psychiatric case–control differences in postmortem brain are
 small, and n = 52 development donors is tiny. The most likely outcome is every model near
 0.25–0.35 macro-F1 with overlapping intervals. SCZ vs Control (C5) is the best chance to see
@@ -254,7 +296,9 @@ will cut GNN seeds for *controls only* from 5 to 3, and say so in the log.
 | C5 binary SCZ/Ctrl: C1 + best model (worst case a GNN at ~½ the data) | 0.8 |
 | C6 sensitivity on the best model if it's a GNN: (b) + 3 random-drop draws at 3 seeds | ~3.6 |
 | Final test evaluation (2 configurations) | 0.2 |
-| **Total (worst case, GNN is best)** | **~14.6 h** |
+| C2b degree-preserving random graph for V1 and V2 | 3.0 |
+| C8 selection-bias demo (LR) | 0.1 |
+| **Total (worst case, GNN is best)** | **~17.7 h** |
 
 Caching: each (configuration, repetition, fold, seed) writes its own JSON under
 `results/raw/`. A run skips cells that already exist, so an interrupt costs at most one
@@ -282,3 +326,23 @@ fold.
 `results/confusion/*.json`, `results/final_comparison.md` (test-set evaluation and 5×5 CV
 mean ± SD side by side, for the best model and the best simple baseline), `LOG.md`.
 Raw CEL data is not committed (1 GB); the md5 values above identify it.
+
+## 12. Assessment of the supplied `gen_prep-v7.py` (not adopted as the pipeline)
+
+The script downloads the GEO series matrix with GEOparse, log2-transforms it, labels each
+sample, keeps the genes listed in `<GSE>.top.table.tsv`, and writes one CSV. Checked against
+this dataset:
+
+| Point | Finding | Consequence |
+|---|---|---|
+| log2 step (`if no negatives: log2`) | Series-matrix values are linear (4.4 – 30,750, median 58.8), so log2 is **correct here** (→ 2.1 – 14.9) | fine for GSE53987; would double-log a dataset deposited already in log2 |
+| Input values | the submitters' RMA over **all** arrays per region | test arrays shape training features (rule 3); fRMA avoids it |
+| Labels | `Type = row["title"]`, e.g. `bipolar_hip_10`: a unique string per sample, no diagnosis, region or donor column | downstream code must parse these. A plain row-wise split is a per-sample split (rule 5, ≈ +0.156) |
+| Gene selection | `top.table.tsv` is a GEO2R/limma table computed **once on all samples**, before any split | selection bias (Ambroise & McLachlan 2002): the chosen genes already "know" the held-out labels. GEO2R also doesn't block on donor |
+| Features | Affymetrix probe IDs, not genes | a "gene graph" would really be a probe graph, with duplicate genes |
+| Reproducibility | interactive `input()`, no seed, no versions recorded | conflicts with the JSON/version requirement |
+
+**Decision:** I won't use it for data preparation. I'll use it as a **measured control (C8)**:
+same donor-grouped CV, but with its global top-table selection, which quantifies how much its
+design inflates results. If the "existing study" referenced in rule 10 used this script, its
+reported numbers should be compared against C8, not against our primary results.
