@@ -140,3 +140,37 @@ corrected p = 0.010** (uncorrected 9e-8). **Signal exists for SCZ vs Control and
 the corrected test.** Precision/recall: Control 0.76/0.81, SCZ 0.76/0.66.
 **PVALB positive control passes:** lower in SCZ in 25/25 folds (mean logFC −0.62, median
 P 0.009, median rank 1462 of about 15.6k genes).
+
+### C4 — leakage demonstration (sample-level vs donor-grouped split)
+Sample-level 5×5 CV: macro-F1 **0.653** (AUC 0.88) vs donor-grouped C1 0.311: **+0.343**,
+NB p < 0.001. **Conflict with the protocol's figure (+0.156):** the inflation here is about
+twice as large. A likely reason is that our pipeline standardises within region and uses
+all 3 regions per donor, so a donor's other two regions in training are near-duplicates of
+the held-out sample. Per protocol I report the observed value, not the cited one.
+
+### V5 — covariate residualisation (variant #9)
+0.301 (fold SD 0.093, AUC 0.616). Versus C1: −0.009, NB p = 0.85. **Failure criterion met.**
+Removing pH/RIN/PMI/age/sex doesn't help (and doesn't hurt: the SCZ signal isn't a
+pH/RIN artefact at this resolution).
+
+### C6b — primary + 5 mixed-sex donors in training (same validation folds)
+0.341; versus C1 +0.031, NB p = 0.40. The random-drop reference draws (C6c) are running.
+
+## 2026-09-30 ~10:25 — FINALS FROZEN (rule 9), before any test-set access
+
+All 9 pre-registered variants are complete (**9 / 12 used; the 3 reserve slots are left unused
+on purpose**, because adding variants after seeing these results would be an outcome-driven
+search). Development-CV macro-F1 ranking of eligible configurations (V4, the confound probe,
+is ineligible per PLAN §7):
+C1 0.3106 > V9 0.3017 > V5 0.3011 > V8 0.2922 > V3 0.2891 > V2 0.2771 > V1 0.2682 >
+V7 0.2658 > V6 0.2656.
+
+Applying the rule fixed in PLAN §7:
+- **Best model = C1_logreg** (highest development-CV mean). No variant beat the baseline.
+- **Best simple baseline = V5_logreg_residualised.** It is the highest among {C1, V3, V5, V8}
+  excluding the best model.
+
+Both are frozen as registered in `scripts/06_run.py`. The final evaluation
+(`scripts/08_final_test.py C1_logreg V5_logreg_residualised`) refits each on all 143 clean
+development samples and predicts the 49 locked test samples **once**. Both models are
+deterministic (1 seed). CI: donor-level cluster bootstrap, 10,000 resamples.
