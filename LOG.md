@@ -99,3 +99,17 @@ is in SCZ.
   limma cache, raw cells, and the R and Python packages. Cells are written atomically
   (tmp + rename), so none are partial. Relaunched as one resumable queue
   (`scripts/run_all.sh`), which skips cached cells. At restart, C2b_V2 had 65/125 cells.
+
+## 2026-09-30 07:05 — Second container restart
+- The container is reclaimed a few minutes after the agent's turn goes idle, which kills
+  detached jobs (C2b_V2 advanced only 65 → 81 cells between 06:33 and 07:05). From now on the
+  agent stays attached to the queue with foreground log watches until the runs finish.
+  The resumable cache means nothing already written is lost.
+
+### V1 — reference GCN (variant #7 of 12, pre-registered PLAN §7) — `results/raw/V1_gcn_coexpr`
+Macro-F1 **0.268** (chance 0.25), fold SD 0.066, **seed SD 0.060** (seed noise ≈ fold noise);
+AUC 0.578. Versus C1: Δ = −0.042, NB corrected p = 0.43 (uncorrected 0.039). Recall
+BD 0.18 / Ctrl 0.22 / MDD 0.24 / SCZ 0.56. **Pre-registered failure criterion met** (not
+above C1). Its graph controls (C2, C2b, C3) are pending.
+Also finished: C2b_V2 (degree-preserving random STRING graph): 0.293, fold SD 0.069,
+seed SD 0.066.
