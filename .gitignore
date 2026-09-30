@@ -3,4 +3,5 @@ data/processed/*.tsv
 !data/processed/samples.tsv
 cache/
 __pycache__/
-results/raw/  # temporarily ignored while queues run; force-added at completion
+# temporarily ignored while queues run; force-added at completion
+results/raw/
