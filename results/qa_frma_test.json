@@ -1,0 +1,21 @@
+{
+ "provenance": {
+  "platform": "Linux-6.18.44-fc-v50-x86_64-with-glibc2.39",
+  "python": "3.11.15",
+  "sklearn": "1.9.1",
+  "numpy": "2.4.6",
+  "scipy": "1.17.1",
+  "pandas": "3.0.6",
+  "torch": "2.14.0+cpu",
+  "R": "R version 4.3.3 (2024-02-29) |limma 3.58.1 |affy 1.80.0 |frma 1.54.0",
+  "git_commit": "aaa645af4ef7a77def62719df6e553f165f9b5ff"
+ },
+ "n_arrays": 49,
+ "n_probes": 54675,
+ "n_probes_unique_symbol": 43131,
+ "n_removed_sex_specific": 67,
+ "n_genes": 20794,
+ "per_array_r_with_submitters_min": 0.9645324244300294,
+ "per_array_r_with_submitters_median": 0.9801114656266148,
+ "arrays_best_matched_to_own_submitted_profile": 49
+}

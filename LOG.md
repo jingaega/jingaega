@@ -174,3 +174,22 @@ Both are frozen as registered in `scripts/06_run.py`. The final evaluation
 (`scripts/08_final_test.py C1_logreg V5_logreg_residualised`) refits each on all 143 clean
 development samples and predicts the 49 locked test samples **once**. Both models are
 deterministic (1 seed). CI: donor-level cluster bootstrap, 10,000 resamples.
+
+## 2026-09-30 10:29 — SINGLE FINAL TEST EVALUATION (rule 9) — `results/final_test.json`
+Run once: `08_final_test.py C1_logreg V5_logreg_residualised`. Test-lock sha256 verified
+(c822ca51…). Test arrays fRMA'd only now; QA r = 0.965–0.98 with the submitters' values, and
+all 49 arrays match their own submitted profile.
+Training = all 143 clean development samples; test = 49 samples / 18 donors; chance 0.25.
+
+| Final | Test macro-F1 [95% donor-bootstrap CI] | MCC | AUC | 5×5 CV macro-F1 mean ± fold SD |
+|---|---|---|---|---|
+| Best model C1_logreg | 0.419 [0.249, 0.545] | 0.264 | 0.673 | 0.311 ± 0.088 |
+| Best simple baseline V5_logreg_residualised | 0.466 [0.270, 0.609] | 0.333 | 0.716 | 0.301 ± 0.093 |
+
+Confusion (rows true BD, Ctrl, MDD, SCZ; cols predicted):
+C1 [[3,3,3,5],[3,4,3,4],[3,1,6,2],[0,0,1,8]]; V5 [[3,0,5,6],[3,6,1,4],[4,0,5,3],[0,0,0,9]].
+SCZ is recalled 8/9 and 9/9; BD 3/14 for both models.
+**Reading.** Test point estimates are above CV. The CIs are wide (the C1 lower bound touches
+chance) because the test set has 18 donors; the numbers are compatible with the CV estimate
+plus a modest gain from training on 143 rather than about 115 samples. The test set can't
+distinguish C1 from V5. No second attempt will be made.

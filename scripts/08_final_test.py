@@ -29,6 +29,9 @@ if os.path.exists(OUT):
 REG = __import__("06_run").REG
 configs = sys.argv[1:3]
 
+from common import sha256
+assert sha256(os.path.join(SPLITS, "test_lock.json")) == open(os.path.join(SPLITS, "test_lock.json.sha256")).read().split()[0], \
+    "test_lock.json changed since it was locked"
 lock = json.load(open(os.path.join(SPLITS, "test_lock.json")))
 meta = pd.read_csv(os.path.join(PROC, "samples.tsv"), sep="\t", index_col=0)
 test = meta.loc[lock["test_gsm"]]
