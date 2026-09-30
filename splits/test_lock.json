@@ -1,0 +1,134 @@
+{
+ "created": "2026-09-30",
+ "rule": "protocol rule 1; PLAN.md \u00a72",
+ "sklearn_version": "1.9.1",
+ "random_state": 20260930,
+ "call": "train_test_split(donors_without_mixed_sex, test_size=0.25, stratify=diagnosis)",
+ "pool_donors": 70,
+ "excluded_mixed_sex_donors": [
+  "BD_18",
+  "MDD_11",
+  "MDD_2",
+  "SCZ_4",
+  "SCZ_7"
+ ],
+ "test_donors": [
+  "BD_10",
+  "BD_15",
+  "BD_4",
+  "BD_5",
+  "BD_6",
+  "Control_10",
+  "Control_11",
+  "Control_19",
+  "Control_3",
+  "Control_6",
+  "MDD_1",
+  "MDD_10",
+  "MDD_8",
+  "MDD_9",
+  "SCZ_13",
+  "SCZ_17",
+  "SCZ_5",
+  "SCZ_6"
+ ],
+ "test_gsm": [
+  "GSM1304852",
+  "GSM1304857",
+  "GSM1304864",
+  "GSM1304865",
+  "GSM1304866",
+  "GSM1304870",
+  "GSM1304871",
+  "GSM1304879",
+  "GSM1304882",
+  "GSM1304885",
+  "GSM1304888",
+  "GSM1304897",
+  "GSM1304903",
+  "GSM1304904",
+  "GSM1304915",
+  "GSM1304916",
+  "GSM1304920",
+  "GSM1304925",
+  "GSM1304931",
+  "GSM1304932",
+  "GSM1304933",
+  "GSM1304937",
+  "GSM1304938",
+  "GSM1304946",
+  "GSM1304949",
+  "GSM1304952",
+  "GSM1304956",
+  "GSM1304965",
+  "GSM1304971",
+  "GSM1304972",
+  "GSM1304976",
+  "GSM1304984",
+  "GSM1304985",
+  "GSM1304991",
+  "GSM1304992",
+  "GSM1304993",
+  "GSM1304997",
+  "GSM1305007",
+  "GSM1305010",
+  "GSM1305014",
+  "GSM1305015",
+  "GSM1305023",
+  "GSM1305029",
+  "GSM1305030",
+  "GSM1305031",
+  "GSM1305043",
+  "GSM1305044",
+  "GSM1305051",
+  "GSM1305055"
+ ],
+ "test_counts": {
+  "BD": {
+   "donors": 5,
+   "samples": 14
+  },
+  "Control": {
+   "donors": 5,
+   "samples": 14
+  },
+  "MDD": {
+   "donors": 4,
+   "samples": 12
+  },
+  "SCZ": {
+   "donors": 4,
+   "samples": 9
+  }
+ },
+ "dev_counts_clean": {
+  "BD": {
+   "donors": 13,
+   "samples": 36
+  },
+  "Control": {
+   "donors": 14,
+   "samples": 41
+  },
+  "MDD": {
+   "donors": 12,
+   "samples": 33
+  },
+  "SCZ": {
+   "donors": 13,
+   "samples": 33
+  }
+ },
+ "dev_mixed_sex_samples": 13,
+ "provenance": {
+  "platform": "Linux-6.18.44-fc-v50-x86_64-with-glibc2.39",
+  "python": "3.11.15",
+  "sklearn": "1.9.1",
+  "numpy": "2.4.6",
+  "scipy": "1.17.1",
+  "pandas": "3.0.6",
+  "torch": "2.14.0+cpu",
+  "R": "R version 4.3.3 (2024-02-29) |limma 3.58.1 |affy 1.80.0 |frma 1.54.0",
+  "git_commit": "1c905e7eb190f9f584e50f24c896311bf375a169"
+ }
+}
