@@ -193,3 +193,17 @@ SCZ is recalled 8/9 and 9/9; BD 3/14 for both models.
 chance) because the test set has 18 donors; the numbers are compatible with the CV estimate
 plus a modest gain from training on 143 rather than about 115 samples. The test set can't
 distinguish C1 from V5. No second attempt will be made.
+
+### C6 — mixed-sex sensitivity (complete, 20 draws)
+Primary (mixed-sex excluded) − (b) (included) = −0.031. Random 5-donor drops from (b):
+−0.013 ± 0.019 (range −0.042 to +0.020); the primary sits at the 20th percentile.
+**Indistinguishable from losing any 5 donors.**
+
+### C7 — permutation null (complete; 20 donor-level permutations × repetition 0)
+Null 0.250 ± 0.035 (range 0.186–0.325); C1 on the same 5 folds 0.322; permutation
+p = 2/21 = 0.095. The empirical chance level equals the nominal 0.25.
+
+## 2026-09-30 12:28 — ALL RUNS COMPLETE
+Exploratory variants used: **9 / 12**. Every required control done: C1, C2/C2b/C3 for both
+graphs, C4, C5, C6, C7, C8. Final report: `REPORT.md`. Tables: `results/variants_table.md`,
+`results/final_comparison.md`.

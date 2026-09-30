@@ -109,8 +109,8 @@ SCZ is recalled 8/9 and 9/9, but at a cost: many BD and Control samples are *cal
 | C8 selection bias (the supplied `gen_prep-v7.py` design: top table chosen once on all dev samples) | **0.476 (+0.165, NB p = 0.002)**, "significant" vs chance p = 0.0001 | Selecting genes before splitting manufactures an apparently significant 4-class classifier out of a dataset that, analysed properly, does not beat chance. |
 | C5 SCZ vs Control | **0.721** (chance 0.50), AUC 0.82, NB p = 0.010 | Real signal, confined to SCZ. |
 | PVALB positive control | lower in SCZ in **25/25** folds (mean logFC −0.62) | Reproduces the known parvalbumin deficit (Lanz et al. 2015). Preprocessing is sound. |
-| C6 mixed-sex sensitivity | SEE_C6 | SEE_C6_READ |
-| C7 label-permutation null (C1, rep 0) | SEE_C7 | SEE_C7_READ |
+| C6 mixed-sex sensitivity (same validation folds; training changes only) | Excluding the 5 mixed-sex donors vs including them: **−0.031**. Dropping 5 random clean donors (same diagnosis mix) instead: −0.013 ± 0.019 (20 draws, range −0.042 to +0.020). The exclusion sits at the 20th percentile. | The effect of the mixed-sex donors is **indistinguishable from losing any 5 donors**: a sample-size effect, not a contamination effect. The exclusion decision doesn't drive the conclusions. |
+| C7 label-permutation null (whole pipeline incl. limma, donor-level permutation, rep 0) | Null macro-F1 **0.250 ± 0.035** (20 perms, range 0.186–0.325); C1 on the same folds 0.322; **permutation p = 0.095** | The empirical chance level matches the nominal 0.25. C1 is not significant by permutation either, agreeing with the corrected t-test. |
 | V4 covariates only | 0.181, AUC 0.36 (below chance) | The donors are tetrad-matched on age, sex and PMI. Holding out a fold leaves the training set imbalanced in the opposite direction, so a covariate model *anti*-predicts. Matched designs can push CV scores below chance when there is no signal. |
 
 ## 5. Where the signal is (and isn't)
