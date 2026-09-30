@@ -1,0 +1,36 @@
+{
+ "config": "V6_modules_logreg",
+ "labels": [
+  "BD",
+  "Control",
+  "MDD",
+  "SCZ"
+ ],
+ "rows_true_cols_pred": [
+  [
+   5.8,
+   13.4,
+   8.8,
+   8.0
+  ],
+  [
+   13.4,
+   11.0,
+   13.2,
+   3.4
+  ],
+  [
+   9.0,
+   15.0,
+   7.0,
+   2.0
+  ],
+  [
+   6.4,
+   4.8,
+   7.0,
+   14.8
+  ]
+ ],
+ "note": "summed over the 5 folds of each (repetition, seed), then averaged"
+}

@@ -1,0 +1,36 @@
+{
+ "config": "C1_logreg",
+ "labels": [
+  "BD",
+  "Control",
+  "MDD",
+  "SCZ"
+ ],
+ "rows_true_cols_pred": [
+  [
+   8.4,
+   11.8,
+   8.4,
+   7.4
+  ],
+  [
+   12.8,
+   11.2,
+   12.8,
+   4.2
+  ],
+  [
+   5.8,
+   17.2,
+   7.2,
+   2.8
+  ],
+  [
+   6.4,
+   3.6,
+   4.4,
+   18.6
+  ]
+ ],
+ "note": "summed over the 5 folds of each (repetition, seed), then averaged"
+}

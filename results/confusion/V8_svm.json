@@ -1,0 +1,36 @@
+{
+ "config": "V8_svm",
+ "labels": [
+  "BD",
+  "Control",
+  "MDD",
+  "SCZ"
+ ],
+ "rows_true_cols_pred": [
+  [
+   6.6,
+   12.0,
+   8.2,
+   9.2
+  ],
+  [
+   12.4,
+   11.6,
+   13.0,
+   4.0
+  ],
+  [
+   6.2,
+   15.0,
+   7.4,
+   4.4
+  ],
+  [
+   5.0,
+   4.0,
+   6.4,
+   17.6
+  ]
+ ],
+ "note": "summed over the 5 folds of each (repetition, seed), then averaged"
+}

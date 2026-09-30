@@ -1,0 +1,36 @@
+{
+ "config": "V4_covariates_only",
+ "labels": [
+  "BD",
+  "Control",
+  "MDD",
+  "SCZ"
+ ],
+ "rows_true_cols_pred": [
+  [
+   5.8,
+   12.2,
+   11.4,
+   6.6
+  ],
+  [
+   10.2,
+   14.4,
+   7.0,
+   9.4
+  ],
+  [
+   8.2,
+   9.0,
+   5.2,
+   10.6
+  ],
+  [
+   8.2,
+   9.8,
+   11.0,
+   4.0
+  ]
+ ],
+ "note": "summed over the 5 folds of each (repetition, seed), then averaged"
+}

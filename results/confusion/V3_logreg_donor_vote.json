@@ -1,0 +1,36 @@
+{
+ "config": "V3_logreg_donor_vote",
+ "labels": [
+  "BD",
+  "Control",
+  "MDD",
+  "SCZ"
+ ],
+ "rows_true_cols_pred": [
+  [
+   7.8,
+   12.0,
+   9.0,
+   7.2
+  ],
+  [
+   12.2,
+   13.2,
+   12.0,
+   3.6
+  ],
+  [
+   5.4,
+   17.8,
+   5.6,
+   4.2
+  ],
+  [
+   5.6,
+   4.2,
+   4.6,
+   18.6
+  ]
+ ],
+ "note": "summed over the 5 folds of each (repetition, seed), then averaged"
+}

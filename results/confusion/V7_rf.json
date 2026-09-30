@@ -1,0 +1,36 @@
+{
+ "config": "V7_rf",
+ "labels": [
+  "BD",
+  "Control",
+  "MDD",
+  "SCZ"
+ ],
+ "rows_true_cols_pred": [
+  [
+   2.6,
+   10.6,
+   3.87,
+   8.07
+  ],
+  [
+   5.4,
+   8.07,
+   9.73,
+   4.67
+  ],
+  [
+   5.73,
+   10.33,
+   2.07,
+   3.67
+  ],
+  [
+   5.4,
+   2.2,
+   1.93,
+   12.87
+  ]
+ ],
+ "note": "summed over the 5 folds of each (repetition, seed), then averaged"
+}
