@@ -1,0 +1,179 @@
+{
+ "design": "Validation folds identical to cv_multiclass. (a) primary train; (b) train + all samples of the 5 mixed-sex donors; (c_i) (b) with 5 random clean donors (1 BD, 2 MDD, 2 SCZ) removed from TRAINING only.",
+ "mixed_sex_gsm": [
+  "GSM1304859",
+  "GSM1304889",
+  "GSM1304898",
+  "GSM1304914",
+  "GSM1304917",
+  "GSM1304957",
+  "GSM1304983",
+  "GSM1304986",
+  "GSM1305004",
+  "GSM1305024",
+  "GSM1305032",
+  "GSM1305042",
+  "GSM1305045"
+ ],
+ "mixed_sex_donors": [
+  "BD_18",
+  "MDD_11",
+  "MDD_2",
+  "SCZ_4",
+  "SCZ_7"
+ ],
+ "random_drop_draws": [
+  [
+   "BD_19",
+   "MDD_16",
+   "MDD_17",
+   "SCZ_12",
+   "SCZ_2"
+  ],
+  [
+   "BD_14",
+   "MDD_13",
+   "MDD_16",
+   "SCZ_14",
+   "SCZ_18"
+  ],
+  [
+   "BD_3",
+   "MDD_4",
+   "MDD_7",
+   "SCZ_18",
+   "SCZ_19"
+  ],
+  [
+   "BD_13",
+   "MDD_12",
+   "MDD_7",
+   "SCZ_16",
+   "SCZ_3"
+  ],
+  [
+   "BD_19",
+   "MDD_3",
+   "MDD_5",
+   "SCZ_11",
+   "SCZ_9"
+  ],
+  [
+   "BD_17",
+   "MDD_12",
+   "MDD_14",
+   "SCZ_11",
+   "SCZ_2"
+  ],
+  [
+   "BD_1",
+   "MDD_16",
+   "MDD_19",
+   "SCZ_16",
+   "SCZ_18"
+  ],
+  [
+   "BD_7",
+   "MDD_14",
+   "MDD_5",
+   "SCZ_10",
+   "SCZ_15"
+  ],
+  [
+   "BD_17",
+   "MDD_19",
+   "MDD_4",
+   "SCZ_10",
+   "SCZ_8"
+  ],
+  [
+   "BD_14",
+   "MDD_12",
+   "MDD_15",
+   "SCZ_10",
+   "SCZ_19"
+  ],
+  [
+   "BD_9",
+   "MDD_15",
+   "MDD_3",
+   "SCZ_1",
+   "SCZ_15"
+  ],
+  [
+   "BD_3",
+   "MDD_15",
+   "MDD_19",
+   "SCZ_11",
+   "SCZ_15"
+  ],
+  [
+   "BD_11",
+   "MDD_14",
+   "MDD_3",
+   "SCZ_11",
+   "SCZ_2"
+  ],
+  [
+   "BD_19",
+   "MDD_14",
+   "MDD_6",
+   "SCZ_15",
+   "SCZ_16"
+  ],
+  [
+   "BD_9",
+   "MDD_13",
+   "MDD_4",
+   "SCZ_10",
+   "SCZ_14"
+  ],
+  [
+   "BD_19",
+   "MDD_19",
+   "MDD_7",
+   "SCZ_10",
+   "SCZ_2"
+  ],
+  [
+   "BD_9",
+   "MDD_14",
+   "MDD_4",
+   "SCZ_11",
+   "SCZ_8"
+  ],
+  [
+   "BD_1",
+   "MDD_3",
+   "MDD_7",
+   "SCZ_15",
+   "SCZ_16"
+  ],
+  [
+   "BD_13",
+   "MDD_16",
+   "MDD_17",
+   "SCZ_1",
+   "SCZ_11"
+  ],
+  [
+   "BD_19",
+   "MDD_13",
+   "MDD_14",
+   "SCZ_14",
+   "SCZ_9"
+  ]
+ ],
+ "seed": 20260930,
+ "provenance": {
+  "platform": "Linux-6.18.44-fc-v50-x86_64-with-glibc2.39",
+  "python": "3.11.15",
+  "sklearn": "1.9.1",
+  "numpy": "2.4.6",
+  "scipy": "1.17.1",
+  "pandas": "3.0.6",
+  "torch": "2.14.0+cpu",
+  "R": "R version 4.3.3 (2024-02-29) |limma 3.58.1 |affy 1.80.0 |frma 1.54.0",
+  "git_commit": "97fc503d4325348c070619dbb76a40ed42acbb5a"
+ }
+}

@@ -1,3 +1,5 @@
 data/raw/
+data/processed/*.tsv
+!data/processed/samples.tsv
 cache/
 __pycache__/
