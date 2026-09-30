@@ -113,3 +113,10 @@ BD 0.18 / Ctrl 0.22 / MDD 0.24 / SCZ 0.56. **Pre-registered failure criterion me
 above C1). Its graph controls (C2, C2b, C3) are pending.
 Also finished: C2b_V2 (degree-preserving random STRING graph): 0.293, fold SD 0.069,
 seed SD 0.066.
+
+### V1 graph controls
+- C3 no-graph (A = I): 0.275 (fold SD 0.065, seed SD 0.059). V1 − C3 = −0.007, NB p = 0.82.
+- C2 uniform random, same edge count: 0.240. V1 − C2 = +0.028, NB p = 0.49.
+- C2b degree-preserving random: 0.276. V1 − C2b = −0.007, NB p = 0.77.
+**The co-expression graph carries no detectable signal beyond its degree structure or no
+graph at all.** This agrees with Brouard et al. 2024.
