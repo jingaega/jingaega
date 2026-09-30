@@ -18,7 +18,7 @@ Written 2026-09-30.
 | limma | 3.58.1 | `packageVersion` |
 | affy | 1.80.0 | `packageVersion` |
 | hgu133plus2cdf | 2.18.0 (Bioconductor source tarball, md5 284fef2f…de3 matches bioconda recipe) | md5 |
-| frma, hgu133plus2frmavecs, hgu133plus2.db | Bioconductor 3.18 — **installing now; plan depends on them, see §1 fallback** | pending |
+| frma / hgu133plus2frmavecs / hgu133plus2.db / preprocessCore | 1.54.0 / 1.5.0 / 3.13.0 / 1.64.0 (Bioconductor 3.18, BiocManager 1.30.27) | `library()` + `packageVersion` |
 
 PyTorch Geometric is not used; the GCN and pooling are written in plain PyTorch with dense
 adjacency (≤ 1000 nodes), which removes one dependency whose version would affect results.

@@ -15,8 +15,8 @@ Running exploratory-variant count: **0 / 12**
   Metadata sex is consistent within every donor, so the mixed-sex problem is only visible in
   expression.
 - **Software installed.** R 4.3.3, limma 3.58.1, affy 1.80.0 (Ubuntu archive);
-  hgu133plus2cdf 2.18.0 (Bioconductor source, md5 verified); frma, hgu133plus2frmavecs,
-  hgu133plus2.db (Bioconductor 3.18); scikit-learn 1.9.1, torch 2.14.0+cpu (PyPI / pytorch CPU index).
+  hgu133plus2cdf 2.18.0 (Bioconductor source, md5 verified);
+  hgu133plus2.db 3.13.0, frma 1.54.0, hgu133plus2frmavecs 1.5.0, preprocessCore 1.64.0 (Bioconductor 3.18, verified to load); scikit-learn 1.9.1, torch 2.14.0+cpu (PyPI / pytorch CPU index).
 - **Decision: fRMA instead of whole-dataset RMA.** Reason: whole-dataset RMA fits its quantile
   reference and probe effects on the test arrays, which conflicts with rule 3. Argued in
   PLAN.md §1 and §10. The fallback is RMA run separately on the dev and test arrays.
