@@ -1,5 +1,5 @@
 {
- "config": "V7_rf",
+ "config": "C4_logreg_sample_level",
  "labels": [
   "BD",
   "Control",
@@ -8,28 +8,28 @@
  ],
  "rows_true_cols_pred": [
   [
-   5.04,
-   14.48,
+   20.4,
    6.2,
-   10.28
-  ],
-  [
-   8.96,
-   13.24,
-   12.84,
-   5.96
-  ],
-  [
-   6.44,
-   17.96,
    4.0,
-   4.6
+   5.4
   ],
   [
-   8.16,
-   3.88,
-   2.56,
-   18.4
+   5.0,
+   28.6,
+   5.6,
+   1.8
+  ],
+  [
+   3.0,
+   9.6,
+   18.2,
+   2.2
+  ],
+  [
+   1.8,
+   1.8,
+   2.0,
+   27.4
   ]
  ],
  "note": "summed over the 5 folds of each (repetition, seed), then averaged"

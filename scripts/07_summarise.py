@@ -55,6 +55,7 @@ for a, b in (("C4_logreg_sample_level", "C1_logreg"), ("C8_logreg_global_selecti
 # C6: mixed-sex sensitivity vs random donor drops (all share C1's validation folds)
 c6 = {}
 drops = sorted(os.path.basename(p) for p in glob.glob(os.path.join(RESULTS, "raw", "C6c_logreg_drop*")))
+drops = [d for d in drops if complete(d, 25)]
 if "C6b_logreg_with_mixed" in summ and drops:
     b = summ["C6b_logreg_with_mixed"]["macro_f1_mean"]
     a = summ["C1_logreg"]["macro_f1_mean"]
@@ -66,6 +67,7 @@ if "C6b_logreg_with_mixed" in summ and drops:
 # C7: permutation null (repetition 0 only)
 c7 = {}
 perms = sorted(os.path.basename(p) for p in glob.glob(os.path.join(RESULTS, "raw", "C7_logreg_perm*")))
+perms = [q for q in perms if complete(q, 5)]
 if perms and "C1_logreg" in summ:
     null = [float(np.mean([np.mean(v) for v in per_fold(load(p)).values()])) for p in perms]
     c1r0 = float(np.mean([np.mean(v) for k, v in per_fold(load("C1_logreg")).items() if k[0] == 0]))

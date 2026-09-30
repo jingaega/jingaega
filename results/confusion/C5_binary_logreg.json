@@ -1,0 +1,18 @@
+{
+ "config": "C5_binary_logreg",
+ "labels": [
+  "Control",
+  "SCZ"
+ ],
+ "rows_true_cols_pred": [
+  [
+   33.0,
+   8.0
+  ],
+  [
+   11.4,
+   21.6
+  ]
+ ],
+ "note": "summed over the 5 folds of each (repetition, seed), then averaged"
+}
