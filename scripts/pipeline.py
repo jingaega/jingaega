@@ -87,13 +87,20 @@ def ensure_limma(jobs):
                            labels=",".join(labels[i] for i in order) if labels is not None else "")
     if not todo:
         return
-    jf = os.path.join(LIMMA_DIR, f"jobs_{os.getpid()}.tsv")
-    pd.DataFrame(list(todo.values())).to_csv(jf, sep="\t", index=False)
-    r = subprocess.run(["Rscript", os.path.join(ROOT, "scripts", "limma_batch.R"), EXPR_TSV, SAMPLES_TSV, jf,
-                        LIMMA_DIR], capture_output=True, text=True)
-    if r.returncode != 0:
-        raise RuntimeError(r.stderr[-3000:])
-    os.remove(jf)
+    rows = list(todo.values())
+    n = max(1, min(int(os.environ.get("LIMMA_WORKERS", "4")), len(rows)))
+    procs = []
+    for w in range(n):
+        jf = os.path.join(LIMMA_DIR, f"jobs_{os.getpid()}_{w}.tsv")
+        pd.DataFrame(rows[w::n]).to_csv(jf, sep="\t", index=False)
+        procs.append((jf, subprocess.Popen(["Rscript", os.path.join(ROOT, "scripts", "limma_batch.R"), EXPR_TSV,
+                                            SAMPLES_TSV, jf, LIMMA_DIR], stdout=subprocess.PIPE,
+                                           stderr=subprocess.PIPE, text=True)))
+    for jf, pr in procs:
+        _, err = pr.communicate()
+        if pr.returncode != 0:
+            raise RuntimeError(err[-3000:])
+        os.remove(jf)
 
 
 def limma_table(train, mode, labels=None):
