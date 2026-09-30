@@ -120,3 +120,23 @@ seed SD 0.066.
 - C2b degree-preserving random: 0.276. V1 − C2b = −0.007, NB p = 0.77.
 **The co-expression graph carries no detectable signal beyond its degree structure or no
 graph at all.** This agrees with Brouard et al. 2024.
+
+### V2 — STRING PPI GCN (variant #8) and controls
+V2 0.277 (fold SD 0.067, seed SD 0.059; 224–869 edges per fold, mean 411). Versus C1:
+−0.033 (NB p = 0.41). Versus C3 no-graph: +0.002 (p = 0.94). Versus C2 uniform (0.290):
+−0.013 (p = 0.75). Versus C2b degree-preserving (0.293): −0.016 (p = 0.58).
+**Failure criterion met.** The prior-knowledge graph adds nothing either.
+
+### C8 — selection-bias demo (gen_prep-style global top table)
+Macro-F1 **0.476** vs C1 0.311: **+0.165**, NB p = 0.002 (uncorrected 1.8e-9). Versus chance
+p = 0.0001. Choosing genes once on all development samples before CV produces an apparently
+"significant" classifier from a dataset that, analysed honestly, doesn't beat chance
+(Ambroise & McLachlan 2002). It is the same size as the per-sample-split inflation the
+protocol cites (+0.156).
+
+### C5 — binary SCZ vs Control (signal check)
+Macro-F1 **0.721** (chance 0.50), fold SD 0.147, MCC 0.49, AUC 0.82. Versus chance: **NB
+corrected p = 0.010** (uncorrected 9e-8). **Signal exists for SCZ vs Control and survives
+the corrected test.** Precision/recall: Control 0.76/0.81, SCZ 0.76/0.66.
+**PVALB positive control passes:** lower in SCZ in 25/25 folds (mean logFC −0.62, median
+P 0.009, median rank 1462 of about 15.6k genes).
