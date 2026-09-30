@@ -93,3 +93,9 @@ is in SCZ.
   closure couldn't be pickled). No cells were written. Fixed by making `make_gcn` a
   module-level `functools.partial`; the model and hyperparameters are unchanged. The GCN
   block is re-queued (`run_queue_gcn.sh`) to start after the limma-heavy controls finish.
+
+## 2026-09-30 06:32 — Container restart
+- The container restarted at about 06:31, killing both queues. All files survived: data,
+  limma cache, raw cells, and the R and Python packages. Cells are written atomically
+  (tmp + rename), so none are partial. Relaunched as one resumable queue
+  (`scripts/run_all.sh`), which skips cached cells. At restart, C2b_V2 had 65/125 cells.
