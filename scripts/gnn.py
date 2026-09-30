@@ -3,6 +3,7 @@
 Graphs are built on the fold's training data only. Fixed training budget: 200 epochs, no
 early stopping, no checkpoint selection (rule 4).
 """
+import functools
 import os
 
 import networkx as nx
@@ -132,20 +133,22 @@ def _train(model, f, seed):
         return torch.softmax(model(torch.tensor(f.Xva, dtype=torch.float32)), 1).numpy()
 
 
+def _gcn_fn(graph_fn, randomiser, f, seed):
+    torch.manual_seed(seed)
+    rng = np.random.default_rng(seed)
+    n = f.Xtr.shape[1]
+    edges = graph_fn(f, rng)
+    if randomiser is not None:
+        edges = randomiser(edges, n, rng)
+    f._n_edges = len(edges)
+    p = -np.log10(np.clip(f.pvals, 1e-300, 1))
+    prior = torch.tensor((p - p.min()) / (p.max() - p.min() + 1e-12), dtype=torch.float32)
+    return _train(GCNPool(norm_adj(edges, n), prior, f.n_classes), f, seed)
+
+
 def make_gcn(graph_fn, randomiser=None):
-    def fn(f, seed):
-        torch.manual_seed(seed)
-        rng = np.random.default_rng(seed)
-        n = f.Xtr.shape[1]
-        edges = graph_fn(f, rng)
-        if randomiser is not None:
-            edges = randomiser(edges, n, rng)
-        f._n_edges = len(edges)
-        p = -np.log10(np.clip(f.pvals, 1e-300, 1))
-        prior = torch.tensor((p - p.min()) / (p.max() - p.min() + 1e-12), dtype=torch.float32)
-        nc = f.n_classes
-        return _train(GCNPool(norm_adj(edges, n), prior, nc), f, seed)
-    return fn
+    """Picklable model function (module-level partial) for multiprocessing."""
+    return functools.partial(_gcn_fn, graph_fn, randomiser)
 
 
 def m_mlp(f, seed):

@@ -87,3 +87,9 @@ AUC 0.588. Versus chance: NB corrected t = 1.28, **p = 0.21** (uncorrected p = 0
 **It does not beat chance under the corrected test.** Per class recall/precision:
 BD 0.24/0.26, Control 0.29/0.24, MDD 0.21/0.24, **SCZ 0.56/0.60**. Whatever signal there is,
 is in SCZ.
+
+## 2026-09-30 — Queue incident
+- The first launch of every GCN configuration failed immediately (the multiprocessing
+  closure couldn't be pickled). No cells were written. Fixed by making `make_gcn` a
+  module-level `functools.partial`; the model and hyperparameters are unchanged. The GCN
+  block is re-queued (`run_queue_gcn.sh`) to start after the limma-heavy controls finish.
