@@ -1,0 +1,172 @@
+{
+ "provenance": {
+  "platform": "Linux-6.18.44-fc-v50-x86_64-with-glibc2.39",
+  "python": "3.11.15",
+  "sklearn": "1.9.1",
+  "numpy": "2.4.6",
+  "scipy": "1.17.1",
+  "pandas": "3.0.6",
+  "torch": "2.14.0+cpu",
+  "R": "R version 4.3.3 (2024-02-29) |limma 3.58.1 |affy 1.80.0 |frma 1.54.0",
+  "git_commit": "d3827967f06a46f10dadbd118ce6bd224104b386"
+ },
+ "method": "score = mean log2 expr of RPS4Y1,DDX3Y,KDM5D,USP9Y,EIF1AY minus XIST; 2-means threshold",
+ "threshold": -0.617415770122459,
+ "male_mode": 3.9482497430780557,
+ "female_mode": -5.183081283322974,
+ "min_gap_to_threshold": 3.8838347883536373,
+ "n_discordant_samples": 8,
+ "donors_with_both_sexes": [
+  "BD_18",
+  "MDD_11",
+  "MDD_2",
+  "SCZ_4",
+  "SCZ_7"
+ ],
+ "expected": [
+  "BD_18",
+  "MDD_11",
+  "MDD_2",
+  "SCZ_4",
+  "SCZ_7"
+ ],
+ "matches_expected": true,
+ "donors_with_discordant_metadata": [
+  "BD_18",
+  "Control_7",
+  "MDD_11",
+  "MDD_2",
+  "SCZ_4",
+  "SCZ_7"
+ ],
+ "samples": [
+  {
+   "gsm": "GSM1304859",
+   "donor": "BD_18",
+   "region": "hip",
+   "sex": "F",
+   "expr_sex": "M",
+   "sex_score": 3.2664190182311783
+  },
+  {
+   "gsm": "GSM1304886",
+   "donor": "Control_7",
+   "region": "hip",
+   "sex": "F",
+   "expr_sex": "M",
+   "sex_score": 3.8843198477797536
+  },
+  {
+   "gsm": "GSM1304889",
+   "donor": "MDD_11",
+   "region": "hip",
+   "sex": "F",
+   "expr_sex": "M",
+   "sex_score": 3.8822755400840796
+  },
+  {
+   "gsm": "GSM1304898",
+   "donor": "MDD_2",
+   "region": "hip",
+   "sex": "M",
+   "expr_sex": "F",
+   "sex_score": -5.219156934175347
+  },
+  {
+   "gsm": "GSM1304914",
+   "donor": "SCZ_4",
+   "region": "hip",
+   "sex": "M",
+   "expr_sex": "F",
+   "sex_score": -5.657749472345208
+  },
+  {
+   "gsm": "GSM1304917",
+   "donor": "SCZ_7",
+   "region": "hip",
+   "sex": "F",
+   "expr_sex": "M",
+   "sex_score": 4.086898112735121
+  },
+  {
+   "gsm": "GSM1304953",
+   "donor": "Control_7",
+   "region": "pfc",
+   "sex": "F",
+   "expr_sex": "M",
+   "sex_score": 4.299448502145948
+  },
+  {
+   "gsm": "GSM1304957",
+   "donor": "MDD_11",
+   "region": "pfc",
+   "sex": "F",
+   "expr_sex": "F",
+   "sex_score": -5.186636855287397
+  },
+  {
+   "gsm": "GSM1304983",
+   "donor": "SCZ_4",
+   "region": "pfc",
+   "sex": "M",
+   "expr_sex": "M",
+   "sex_score": 4.335370898955638
+  },
+  {
+   "gsm": "GSM1304986",
+   "donor": "SCZ_7",
+   "region": "pfc",
+   "sex": "F",
+   "expr_sex": "F",
+   "sex_score": -5.57179351556254
+  },
+  {
+   "gsm": "GSM1305004",
+   "donor": "BD_18",
+   "region": "str",
+   "sex": "F",
+   "expr_sex": "F",
+   "sex_score": -5.008148808138239
+  },
+  {
+   "gsm": "GSM1305011",
+   "donor": "Control_7",
+   "region": "str",
+   "sex": "F",
+   "expr_sex": "M",
+   "sex_score": 3.72230458017735
+  },
+  {
+   "gsm": "GSM1305024",
+   "donor": "MDD_2",
+   "region": "str",
+   "sex": "M",
+   "expr_sex": "M",
+   "sex_score": 3.7760113288780106
+  },
+  {
+   "gsm": "GSM1305032",
+   "donor": "MDD_11",
+   "region": "str",
+   "sex": "F",
+   "expr_sex": "F",
+   "sex_score": -5.24374027484912
+  },
+  {
+   "gsm": "GSM1305042",
+   "donor": "SCZ_4",
+   "region": "str",
+   "sex": "M",
+   "expr_sex": "M",
+   "sex_score": 3.811360515540416
+  },
+  {
+   "gsm": "GSM1305045",
+   "donor": "SCZ_7",
+   "region": "str",
+   "sex": "F",
+   "expr_sex": "F",
+   "sex_score": -5.266369573859253
+  }
+ ]
+}

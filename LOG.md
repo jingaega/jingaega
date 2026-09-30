@@ -43,3 +43,18 @@ PLAN.md written; **waiting for approval**. Nothing has been split, normalised or
 - **Plan changes:** added C2b (degree-preserving random graph, from Brouard 2024), C8
   (selection-bias demo), and the PVALB positive control; runtime estimate 14.6 → 17.7 h.
   The variant budget is unchanged (0 / 12 used).
+
+## 2026-09-30 — Plan approved. Step 0: sex QA (`scripts/01_sex_qa.py` → `results/qa_sex.json`)
+
+- Score = mean log2 of RPS4Y1, DDX3Y, KDM5D, USP9Y, EIF1AY minus XIST, computed on the
+  submitters' matrix. Two clean modes (male ≈ +3.9, female ≈ −5.2; every sample ≥ 3.9 away
+  from the threshold).
+- Donors with arrays of both sexes = **BD_18, MDD_11, MDD_2, SCZ_4, SCZ_7**. This matches
+  the protocol exactly.
+- **All 8 discordant arrays of those donors are hippocampus arrays.** No PFC or striatum array
+  is discordant, which suggests the upstream problem sits in hippocampus sample handling.
+- **New finding: Control_7.** All 3 arrays (hip, pfc, str) are male by expression, but the
+  metadata says F. The arrays agree with each other, so this is not a mixed-sex donor. Either
+  the metadata sex is wrong, or the whole donor is someone other than recorded.
+- Per PLAN §3 ("if the list differs … stop and report before splitting"), **stopped before
+  the split** and asked the user how to handle Control_7.
